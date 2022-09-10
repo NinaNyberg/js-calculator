@@ -1,0 +1,93 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: 'Digital';
+  src: url(fonts/Digital7-1e1Z.ttf);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 18em;
+  margin: 5em auto 0 auto;
+  border-radius: 0.5em;
+  box-shadow: 0 0 5px grey;
+}
+
+#display {
+  border: none;
+  background-color: black;
+  color: white;
+  font-size: 1.5em;
+  font-weight: bold;
+  text-align: right;
+  height: 3em;
+  max-width: 16em;
+  margin: 1em auto 0.5em auto;
+  padding: 0 0.5em;
+  border-radius: 0.5em;
+  font-family: 'Digital', sans-serif;
+}
+
+#display:focus {
+  border: 5px solid #fff;
+}
+
+.options {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1em;
+  padding: 1em;
+}
+
+.btn {
+  text-align: center;
+  border-radius: 0.5em;
+  box-shadow: 0 0 5px grey;
+  padding: 1em 0.5em;
+  transition: 0.3s;
+  border: none;
+  font-weight: bold;
+}
+
+.btn:hover {
+  background-color: darkolivegreen;
+  color: white;
+  font-weight: bolder;
+}
+
+.operation:hover {
+  background-color: cadetblue;
+}
+
+#clear {
+  grid-column: span 2;
+  text-align: center;
+}
+
+#clear:hover {
+  background-color: orangered;
+}
+
+#equals {
+  grid-column: span 2;
+  text-align: center;
+}
+
+#equals:hover {
+  background-color: black;
+}
+
+#delete {
+  text-align: center;
+}
+
+#delete:hover {
+  background-color: darkgoldenrod;
+}
