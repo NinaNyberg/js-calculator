@@ -8,6 +8,8 @@ let decimalBtn = document.querySelector('#dot');
 
 // Initial vars
 
+let displayDefaultValue = '0';
+display.value = displayDefaultValue;
 let firstNum = null;
 let startSecond = true;
 let operation = '';
@@ -32,6 +34,7 @@ function divide(num1, num2) {
     return num1 / num2;
   } else {
     display.value = 'Boo! Can not divide by 0';
+    console.log(display.value);
   }
 }
 
@@ -52,7 +55,7 @@ function operate(operator, num1, num2) {
 // C button
 
 clearBtn.addEventListener('click', () => {
-  display.value = '';
+  display.value = displayDefaultValue;
   firstNum = null;
   secondNum = null;
   startSecond = true;
@@ -62,8 +65,17 @@ clearBtn.addEventListener('click', () => {
 // DEL button
 
 deleteBtn.addEventListener('click', () => {
-  if (display.value && !startSecond && !calculationDone)
+  if (
+    display.value &&
+    display.value != '0' &&
+    !startSecond &&
+    !calculationDone
+  ) {
     display.value = display.value.slice(0, -1);
+    if (!display.value) {
+      display.value = displayDefaultValue;
+    }
+  }
 });
 
 // Number buttons
@@ -119,7 +131,6 @@ operationButtons.forEach((operationBtn) => {
             ) / 10000
           : Number(display.value);
       //firstNum = Math.round(firstNum * 10000) / 10000;
-      console.log(display.value, '=', result);
       if (isNaN(result)) {
         firstNum = null;
         secondNum = null;
@@ -127,6 +138,7 @@ operationButtons.forEach((operationBtn) => {
         calculationDone = false;
         return;
       } else {
+        console.log(display.value, '=', result);
         display.value = firstNum = result;
       }
       //secondNum = Number(display.value);
