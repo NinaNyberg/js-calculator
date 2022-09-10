@@ -49,8 +49,6 @@ function operate(operator, num1, num2) {
   }
 }
 
-console.log('RETURN ' + operate('-', '0', '8'));
-
 // C button
 
 clearBtn.addEventListener('click', () => {
@@ -74,10 +72,13 @@ let numButtons = document.querySelectorAll('#number');
 
 numButtons.forEach((numBtn) =>
   numBtn.addEventListener('click', () => {
+    //if (display.value.match(/^0($|[^.]+)/)) return;
+    if (display.value.match(/^0[^.]+/)) return;
     if (
-      startSecond || // if we have first number and operator, but no digits of second number
-      calculationDone || // if equals was pressed
-      (isNaN(display.value) && !display.value.startsWith('.'))
+      startSecond || // if operator was just pressed
+      calculationDone || // if equals was just pressed
+      (isNaN(display.value) && !display.value.startsWith('.')) || // if display shows error
+      display.value === '0' // if display has only 0
     ) {
       display.value = '';
       startSecond = false;
@@ -90,7 +91,7 @@ numButtons.forEach((numBtn) =>
 // Decimal btn
 
 let decimalBtnValue = decimalBtn.innerText;
-console.log(decimalBtnValue);
+//console.log(decimalBtnValue);
 
 decimalBtn.addEventListener('click', () => {
   if (startSecond || calculationDone) {
@@ -105,7 +106,7 @@ decimalBtn.addEventListener('click', () => {
 // Operation buttons
 
 let operationButtons = document.querySelectorAll('.operation');
-console.log(operationButtons);
+//console.log(operationButtons);
 
 operationButtons.forEach((operationBtn) => {
   operationBtn.addEventListener('click', () => {
